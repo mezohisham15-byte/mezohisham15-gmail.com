@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mazen Website</title>
+    <style>
+        /* تصميم الخلفية */
+        body {
+            background-color: #4A148C; /* لون موف غامق */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+
+        /* حاوية التصميم */
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            text-align: center;
+            width: 300px;
+        }
+
+        h2 { margin-bottom: 20px; }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        button {
+            background-color: #AB47BC; /* لون موف فاتح للزر */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        button:hover { background-color: #CE93D8; }
+
+        /* رسالة الخطأ */
+        #error-msg {
+            color: #FFCDD2;
+            margin-top: 15px;
+            font-size: 14px;
+            display: none; /* مخفية في البداية */
+        }
+
+        /* الاسم الذي سيظهر بعد النجاح */
+        #welcome-section {
+            display: none; /* مخفي في البداية */
+        }
+
+        h1 {
+            font-size: 50px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            animation: popIn 0.5s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="login-section">
+            <h2>Enter Password</h2>
+            <input type="password" id="passwordInput" placeholder="Password here...">
+            <button onclick="checkPassword()">Login</button>
+            <p id="error-msg">Wrong password! Try again.</p>
+        </div>
+
+        <div id="welcome-section">
+            <h1>MAZEN</h1>
+            <p>Welcome to your site!</p>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const pass = document.getElementById('passwordInput').value;
+            const error = document.getElementById('error-msg');
+            const loginSection = document.getElementById('login-section');
+            const welcomeSection = document.getElementById('welcome-section');
+
+            if (pass === "1234") {
+                // إذا كان الرقم صح
+                loginSection.style.display = "none";
+                welcomeSection.style.display = "block";
+            } else {
+                // إذا كان الرقم خطأ
+                error.style.display = "block";
+                document.getElementById('passwordInput').value = ""; // مسح الخانة
+            }
+        }
+    </script>
+
+</body>
+</html>
